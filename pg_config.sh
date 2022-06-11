@@ -1,13 +1,12 @@
 apt-get -qqy update
 DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
-apt-get -qqy install postgresql python-psycopg2
-apt-get -qqy install python-sqlalchemy
-curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
-python get-pip.py
-python -m pip install --upgrade "pip < 21.0"
-pip install werkzeug==0.8.3
-pip install flask==0.9
-pip install Flask-Login==0.1.3
+apt-get -qqy install python
+apt-get -qqy install postgresql python3-psycopg2
+apt-get -qqy install python3-sqlalchemy
+apt-get -qqy install python3-pip
+pip install werkzeug
+pip install flask
+pip install Flask-Login
 pip install oauth2client
 pip install requests
 pip install httplib2
