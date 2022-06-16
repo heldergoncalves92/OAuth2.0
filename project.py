@@ -11,7 +11,7 @@ import string
 app = Flask(__name__)
 
 #Connect to Database and create database session
-engine = create_engine('sqlite:///restaurantmenu.db')
+engine = create_engine('sqlite:///restaurantmenu.db', connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -22,7 +22,8 @@ session = DBSession()
 def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(32))
     login_session['state'] = state
-    return "The current session state is %s" % login_session['state']
+    # return "The current session state is %s" % login_session['state']
+    return render_template('login.html', STATE=state)
 
 #JSON APIs to view Restaurant Information
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
